@@ -438,6 +438,36 @@ export const customersGrid = [
   },
 
 ];
+export const pointGrid = [
+  { type: 'checkbox', width: '50' 
+},
+  { headerText: 'Tên',
+    width: '150',
+    template: customerGridImage,
+    textAlign: 'Center' 
+  },
+  { field: 'totalPoint',
+    headerText: 'Tổng điểm',
+    width: '150',
+    textAlign: 'Center' 
+  },
+  { field: 'reddeemPoints',
+    headerText: 'Điểm đã đổi',
+    width: '150',
+    textAlign: 'Center' },
+  { field: 'Status',
+    headerText: 'Trạng thái',
+    width: '130',
+    format: 'yMd',
+    textAlign: 'Center',
+    template: customerGridStatus },
+  { field: 'CustomerID',
+    headerText: 'ID Khách hàng',
+    width: '120',
+    textAlign: 'Center',
+    isPrimaryKey: true,
+  },
+];
 
 export const employeesGrid = [
   { headerText: 'Nhân viên',
@@ -499,6 +529,10 @@ export const links = [
       },
       {
         name: 'customers',
+        icon: <RiContactsLine />,
+      },
+      {
+        name: 'point',
         icon: <RiContactsLine />,
       },
     ],
@@ -1484,6 +1518,12 @@ export const customersData = [
     Budget: '$16.5k',
     Location: 'USA',
   },
+
+];
+
+export const pointData = [
+  
+   
 
 ];
 
