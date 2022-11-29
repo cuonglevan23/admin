@@ -6,6 +6,7 @@ export { default as Editor } from './Editor';
 export { default as Customers } from './Customers';
 export { default as Point } from './Point';
 export { default as Product } from './Product';
+export { default as NewProduct } from './NewProduct';
 export { default as ColorPicker } from './ColorPicker';
 export { default as Calendar } from './Calendar';
 export { default as Area } from './Charts/Area';

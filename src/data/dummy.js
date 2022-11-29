@@ -584,7 +584,7 @@ export const links = [
       },
       {
         name: 'Sản Phẩm',
-        icon: < RiProductHuntFill/>,
+        icon: < RiProductHuntFill />,
       },
     ],
   },
@@ -2225,6 +2225,7 @@ export const productData = [
     Giá: 200.000,
     TotalAmount: 32.38,
     Loại: 'Fresh Tomato',
+    Sốlượng: 20,
     Status: 'pending',
     StatusBg: '#FB9678',
     ProductImage:
@@ -2237,6 +2238,12 @@ export const productGrid = [
     template: gridOrderImage,
     textAlign: 'Center',
     width: '120',
+  },
+  {
+    field: 'Số Lượng',
+    headerText: 'SốLượng',
+    width: '150',
+    textAlign: 'Center',
   },
   {
     field: 'Loại',
