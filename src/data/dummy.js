@@ -4,7 +4,7 @@ import { FiShoppingBag, FiEdit, FiPieChart, FiBarChart, FiCreditCard, FiStar, Fi
 import { BsKanban, BsBarChart, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft } from 'react-icons/bs';
 import { BiColorFill } from 'react-icons/bi';
 import { IoMdContacts } from 'react-icons/io';
-import { RiContactsLine, RiStockLine } from 'react-icons/ri';
+import { RiContactsLine, RiStockLine, RiBitCoinLine, RiProductHuntFill } from 'react-icons/ri';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import { HiOutlineRefresh } from 'react-icons/hi';
 import { TiTick } from 'react-icons/ti';
@@ -44,22 +44,30 @@ export const gridOrderStatus = (props) => (
 );
 
 export const kanbanGrid = [
-  { headerText: 'To Do',
+  {
+    headerText: 'To Do',
     keyField: 'Open',
-    allowToggle: true },
+    allowToggle: true
+  },
 
-  { headerText: 'In Progress',
+  {
+    headerText: 'In Progress',
     keyField: 'InProgress',
-    allowToggle: true },
+    allowToggle: true
+  },
 
-  { headerText: 'Testing',
+  {
+    headerText: 'Testing',
     keyField: 'Testing',
     allowToggle: true,
-    isExpanded: false },
+    isExpanded: false
+  },
 
-  { headerText: 'Done',
+  {
+    headerText: 'Done',
     keyField: 'Close',
-    allowToggle: true },
+    allowToggle: true
+  },
 ];
 const gridEmployeeProfile = (props) => (
   <div className="flex items-center gap-2">
@@ -323,20 +331,26 @@ export const colorMappingData = [
 ];
 
 export const rangeColorMapping = [
-  { label: '1°C to 10°C',
+  {
+    label: '1°C to 10°C',
     start: '1',
     end: '10',
-    colors: colorMappingData[1] },
+    colors: colorMappingData[1]
+  },
 
-  { label: '11°C to 20°C',
+  {
+    label: '11°C to 20°C',
     start: '11',
     end: '20',
-    colors: colorMappingData[2] },
+    colors: colorMappingData[2]
+  },
 
-  { label: '21°C to 30°C',
+  {
+    label: '21°C to 30°C',
     start: '21',
     end: '30',
-    colors: colorMappingData[3] },
+    colors: colorMappingData[3]
+  },
 
 ];
 
@@ -393,44 +407,57 @@ export const LinePrimaryYAxis = {
 
 export const customersGrid = [
   { type: 'checkbox', width: '50' },
-  { headerText: 'Tên',
+  {
+    headerText: 'Tên',
     width: '150',
     template: customerGridImage,
-    textAlign: 'Center' },
-  { field: 'ProjectName',
+    textAlign: 'Center'
+  },
+  {
+    field: 'ProjectName',
     headerText: 'Tên dự án',
     width: '150',
-    textAlign: 'Center' },
-  { field: 'Status',
+    textAlign: 'Center'
+  },
+  {
+    field: 'Status',
     headerText: 'Trạng thái',
     width: '130',
     format: 'yMd',
     textAlign: 'Center',
-    template: customerGridStatus },
+    template: customerGridStatus
+  },
   {
     field: 'Weeks',
     headerText: 'Tuần',
     width: '100',
     format: 'C2',
-    textAlign: 'Center' },
-  { field: 'Budget',
+    textAlign: 'Center'
+  },
+  {
+    field: 'Budget',
     headerText: 'Ngân sách',
     width: '100',
     format: 'yMd',
-    textAlign: 'Center' },
+    textAlign: 'Center'
+  },
 
-  { field: 'Location',
+  {
+    field: 'Location',
     headerText: 'Vị trí',
     width: '150',
-    textAlign: 'Center' },
+    textAlign: 'Center'
+  },
 
-  { field: 'CustomerID',
+  {
+    field: 'CustomerID',
     headerText: 'ID Khách hàng',
     width: '120',
     textAlign: 'Center',
     isPrimaryKey: true,
   },
-  { field: 'Point',
+  {
+    field: 'Point',
     headerText: 'Điểm',
     width: '120',
     textAlign: 'Center',
@@ -439,29 +466,37 @@ export const customersGrid = [
 
 ];
 export const pointGrid = [
-  { type: 'checkbox', width: '50' 
-},
-  { headerText: 'Tên',
+  {
+    type: 'checkbox', width: '50'
+  },
+  {
+    headerText: 'Tên',
     width: '150',
     template: customerGridImage,
-    textAlign: 'Center' 
+    textAlign: 'Center'
   },
-  { field: 'totalPoint',
+  {
+    field: 'totalPoint',
     headerText: 'Tổng điểm',
     width: '150',
-    textAlign: 'Center' 
+    textAlign: 'Center'
   },
-  { field: 'reddeemPoints',
+  {
+    field: 'reddeemPoints',
     headerText: 'Điểm đã đổi',
     width: '150',
-    textAlign: 'Center' },
-  { field: 'Status',
+    textAlign: 'Center'
+  },
+  {
+    field: 'Status',
     headerText: 'Trạng thái',
     width: '130',
     format: 'yMd',
     textAlign: 'Center',
-    template: customerGridStatus },
-  { field: 'CustomerID',
+    template: customerGridStatus
+  },
+  {
+    field: 'CustomerID',
     headerText: 'ID Khách hàng',
     width: '120',
     textAlign: 'Center',
@@ -470,44 +505,56 @@ export const pointGrid = [
 ];
 
 export const employeesGrid = [
-  { headerText: 'Nhân viên',
+  {
+    headerText: 'Nhân viên',
     width: '150',
     template: gridEmployeeProfile,
-    textAlign: 'Center' },
-  { field: 'Name',
+    textAlign: 'Center'
+  },
+  {
+    field: 'Name',
     headerText: '',
     width: '0',
     textAlign: 'Center',
   },
-  { field: 'Title',
+  {
+    field: 'Title',
     headerText: 'Chỉ định',
     width: '170',
     textAlign: 'Center',
   },
-  { headerText: 'Quốc tịch',
+  {
+    headerText: 'Quốc tịch',
     width: '120',
     textAlign: 'Center',
-    template: gridEmployeeCountry },
+    template: gridEmployeeCountry
+  },
 
-  { field: 'HireDate',
+  {
+    field: 'HireDate',
     headerText: 'Ngày thuê',
     width: '135',
     format: 'yMd',
-    textAlign: 'Center' },
+    textAlign: 'Center'
+  },
 
-  { field: 'ReportsTo',
+  {
+    field: 'ReportsTo',
     headerText: 'Phản hồi tới',
     width: '120',
-    textAlign: 'Center' },
-  { field: 'EmployeeID',
+    textAlign: 'Center'
+  },
+  {
+    field: 'EmployeeID',
     headerText: 'ID Nhân viên',
     width: '125',
-    textAlign: 'Center' },
+    textAlign: 'Center'
+  },
 ];
 
 export const links = [
   {
-    title: 'Dashboard',
+    title: 'Bảng điều khiển',
     links: [
       {
         name: 'ecommerce',
@@ -517,23 +564,27 @@ export const links = [
   },
 
   {
-    title: 'Pages',
+    title: 'Trang Quản Lý',
     links: [
       {
-        name: 'orders',
+        name: 'Đặt hàng',
         icon: <AiOutlineShoppingCart />,
       },
       {
-        name: 'employees',
+        name: 'Thành viên',
         icon: <IoMdContacts />,
       },
       {
-        name: 'customers',
+        name: 'Khách Hàng',
         icon: <RiContactsLine />,
       },
       {
-        name: 'point',
-        icon: <RiContactsLine />,
+        name: 'Điểm',
+        icon: <RiBitCoinLine />,
+      },
+      {
+        name: 'Sản Phẩm',
+        icon: < RiProductHuntFill/>,
       },
     ],
   },
@@ -924,7 +975,8 @@ export const ordersGrid = [
     editType: 'dropdownedit',
     textAlign: 'Center',
   },
-  { field: 'CustomerName',
+  {
+    field: 'CustomerName',
     headerText: 'Customer Name',
     width: '150',
     textAlign: 'Center',
@@ -1522,8 +1574,8 @@ export const customersData = [
 ];
 
 export const pointData = [
-  
-   
+
+
 
 ];
 
@@ -1536,7 +1588,7 @@ export const employeesData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-    avatar3,
+      avatar3,
   },
   {
     EmployeeID: 2,
@@ -1606,7 +1658,7 @@ export const employeesData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-    avatar2,
+      avatar2,
 
   },
   {
@@ -1677,7 +1729,7 @@ export const employeesData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-    avatar,
+      avatar,
   },
   {
     EmployeeID: 2,
@@ -1747,7 +1799,7 @@ export const employeesData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-    avatar2,
+      avatar2,
 
   },
   {
@@ -1818,7 +1870,7 @@ export const employeesData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-    avatar2,
+      avatar2,
 
   },
   {
@@ -1889,7 +1941,7 @@ export const employeesData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-    avatar2,
+      avatar2,
 
   },
   {
@@ -1960,7 +2012,7 @@ export const employeesData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-    avatar2,
+      avatar2,
 
   },
   {
@@ -2031,7 +2083,7 @@ export const employeesData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-    avatar2,
+      avatar2,
 
   },
   {
@@ -2102,7 +2154,7 @@ export const employeesData = [
     Country: 'USA',
     ReportsTo: 'Carson',
     EmployeeImage:
-    avatar2,
+      avatar2,
 
   },
   {
@@ -2166,7 +2218,63 @@ export const employeesData = [
       avatar2,
   },
 ];
+export const productData = [
+  {
+    productID: 10248,
+    Điểm: 1000,
+    Giá: 200.000,
+    TotalAmount: 32.38,
+    Loại: 'Fresh Tomato',
+    Status: 'pending',
+    StatusBg: '#FB9678',
+    ProductImage:
+      product6,
+  },
+]
+export const productGrid = [
+  {
+    headerText: 'Ảnh',
+    template: gridOrderImage,
+    textAlign: 'Center',
+    width: '120',
+  },
+  {
+    field: 'Loại',
+    headerText: 'Loại Sản Phẩm',
+    width: '150',
+    editType: 'dropdownedit',
+    textAlign: 'Center',
+  },
+  {
+    field: 'Giá',
+    headerText: 'Giá',
+    width: '150',
+    textAlign: 'Center',
+  },
+  {
+    headerText: 'Trạng thái',
+    template: gridOrderStatus,
+    field: 'Trạng thái',
+    textAlign: 'Center',
+    width: '120',
+  },
+  {
+    field: 'Điểm',
+    headerText: 'Điểm',
+    format: 'C2',
+    textAlign: 'Center',
+    editType: 'numericedit',
+    width: '150',
+  },
+  {
+    field: 'productID',
+    headerText: 'Product ID',
+    width: '120',
+    textAlign: 'Center',
+  },
 
+
+];
 export const ordersData = [
   {
     OrderID: 10248,
@@ -2222,7 +2330,7 @@ export const ordersData = [
     Status: 'rejected',
     StatusBg: 'red',
     ProductImage:
-    product1,
+      product1,
   },
   {
     OrderID: 94757,
@@ -3138,29 +3246,35 @@ export const SparklineAreaData = [
 ];
 
 export const lineCustomSeries = [
-  { dataSource: lineChartData[0],
+  {
+    dataSource: lineChartData[0],
     xName: 'x',
     yName: 'y',
     name: 'Germany',
     width: '2',
     marker: { visible: true, width: 10, height: 10 },
-    type: 'Line' },
+    type: 'Line'
+  },
 
-  { dataSource: lineChartData[1],
+  {
+    dataSource: lineChartData[1],
     xName: 'x',
     yName: 'y',
     name: 'England',
     width: '2',
     marker: { visible: true, width: 10, height: 10 },
-    type: 'Line' },
+    type: 'Line'
+  },
 
-  { dataSource: lineChartData[2],
+  {
+    dataSource: lineChartData[2],
     xName: 'x',
     yName: 'y',
     name: 'India',
     width: '2',
     marker: { visible: true, width: 10, height: 10 },
-    type: 'Line' },
+    type: 'Line'
+  },
 
 ];
 
@@ -3223,7 +3337,8 @@ export const stackedChartData = [
 
 export const stackedCustomSeries = [
 
-  { dataSource: stackedChartData[0],
+  {
+    dataSource: stackedChartData[0],
     xName: 'x',
     yName: 'y',
     name: 'Budget',
@@ -3232,7 +3347,8 @@ export const stackedCustomSeries = [
 
   },
 
-  { dataSource: stackedChartData[1],
+  {
+    dataSource: stackedChartData[1],
     xName: 'x',
     yName: 'y',
     name: 'Expense',
