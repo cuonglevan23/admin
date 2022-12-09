@@ -653,6 +653,10 @@ export const links = [
         name: "Sản Phẩm",
         icon: <RiProductHuntFill />,
       },
+      {
+        name: "Danh mục",
+        icon: <RiProductHuntFill />,
+      },
     ],
   },
   {

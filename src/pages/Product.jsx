@@ -18,6 +18,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import ClearIcon from '@mui/icons-material/Clear';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+// import styles from "../styles/limit-line.css"
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -38,8 +39,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, image, description, introduction, point, id) {
-  return { name, image, description, introduction, point, id };
+function createData(name, image, description, introduction, point, id, byPoint) {
+  return { name, image, description, introduction, point, id, byPoint };
 }
 
 const Product = () => {
@@ -48,11 +49,11 @@ const Product = () => {
 
   const handleGetAllProduct = async () => {
     const res = await axios.get("/products/get-all")
-
+    console.log(res.data.products)
     setProducts(res.data.products)
   }
   const rows = products.map((product) => (
-    createData(product.name, <img src={product.imgProduct} style={{ width: 70, height: 70, marginLeft: 'auto' }} />, product.price, product.introduction, product.description, product._id)
+    createData(product.name, <img src={product.imgProduct} style={{ width: 70, height: 70, marginLeft: 'auto' }} />, product.introduction, product.description, product.price, product._id, product.byPoint)
   ))
 
   const notifySuccess = (msg) => toast.success(msg);
@@ -90,7 +91,7 @@ const Product = () => {
               <StyledTableCell align="right">Hình ảnh</StyledTableCell>
               <StyledTableCell align="right">Giới thiệu</StyledTableCell>
               <StyledTableCell align="right">Chi tiết</StyledTableCell>
-              <StyledTableCell align="right">Điểm</StyledTableCell>
+              <StyledTableCell align="right">Giá</StyledTableCell>
               <StyledTableCell align="right">Hành động</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -101,9 +102,9 @@ const Product = () => {
                   {row.name}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.image}</StyledTableCell>
-                <StyledTableCell align="right">{row.introduction}</StyledTableCell>
-                <StyledTableCell align="right">{row.description}</StyledTableCell>
-                <StyledTableCell align="right">{row.point}</StyledTableCell>
+                <StyledTableCell align="right" >{row.introduction}</StyledTableCell>
+                <StyledTableCell align="right" >{row.description}</StyledTableCell>
+                <StyledTableCell align="right" >{row.point} {row.byPoint ? "Điểm" : "Đồng"}</StyledTableCell>
                 <StyledTableCell align="right" ><CreateIcon style={{ color: 'blue', cursor: 'pointer' }} onClick={() => navigate(`/EditProduct/${row.id}`)} /> <ClearIcon style={{ color: 'red', cursor: 'pointer' }} onClick={() => handleDeleteProduct(row.id)} /></StyledTableCell>
               </StyledTableRow>
             ))}

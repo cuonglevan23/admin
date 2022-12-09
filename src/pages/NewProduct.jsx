@@ -23,7 +23,9 @@ const NewProduct = () => {
   const [active, setActive] = useState(true)
   const [isLoading, setIsLoading] = useState(false)
   const [isLoadingInv, setIsLoadingInv] = useState(false)
-
+  const [byPoint, setByPoint] = useState(false)
+  const [categories, setCategories] = useState([])
+  const [category, setCategory] = useState()
   const notifySuccess = (msg) => toast.success(msg);
   const notifyError = (msg) => toast.error(msg);
 
@@ -32,28 +34,33 @@ const NewProduct = () => {
     await new Promise(async () => {
       const image = await imageUpload(file)
       setImage(image)
+      setIsLoading(false)
     })
-    setIsLoading(false)
-    console.log("complete");
+
+
   }
 
   const handleUploadImageInvolve = async (files) => {
     let array = []
     setIsLoadingInv(true)
-    Array.from(files).map(async (file) => {
-      await new Promise(async () => {
-        const image = await imageUpload(file)
-        array.push(image)
-        setImageInvole(array)
-      })
+    if (files.length > 3) {
+      notifyError("Tạo tối đa 3 file ảnh!")
+      files = null
       setIsLoadingInv(false)
-    })
+    }
+    else {
+      Array.from(files).map(async (file) => {
+        await new Promise(async () => {
+          const image = await imageUpload(file)
+          array.push(image)
+        })
+      })
+      setImageInvole(array)
+    }
+    setIsLoadingInv(false)
   }
   const handleAddNewProduct = async () => {
-
-
     try {
-
       await axios.post("/products/create-product", {
         name,
         imgProduct: image,
@@ -61,11 +68,23 @@ const NewProduct = () => {
         price,
         introduction,
         description,
-        quantity
+        quantity,
+        categoryId: category,
+        byPoint,
+        isActive: active
       })
       notifySuccess("Thêm sản phẩm thành công")
     } catch (error) {
       notifyError("Thêm sản phẩm thất bại")
+    }
+  }
+  const handleGetAllCatetories = async () => {
+    try {
+      const res = await axios.get("/categories/get-all")
+      setCategories(res.data.categories)
+      setCategory(res.data.categories[0]._id)
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -75,11 +94,13 @@ const NewProduct = () => {
       await axios.put(`/products/${id}`, {
         name,
         imgProduct: image,
-        imgInvoled: imageInvole,
         price,
         introduction,
         description,
-        quantity
+        quantity,
+        byPoint,
+        categoryId: category,
+        isActive: true
       })
 
       notifySuccess("Cập nhật thành công")
@@ -88,6 +109,10 @@ const NewProduct = () => {
       console.log(error)
       notifyError("Cập nhật thất bại!")
     }
+  }
+
+  const handleSetCategory = e => {
+    setCategory(e.target.value)
   }
 
   const handleShowDetailProduct = async (id) => {
@@ -107,6 +132,8 @@ const NewProduct = () => {
     if (id) {
       handleShowDetailProduct(id)
     }
+    handleGetAllCatetories()
+    console.log("cate", category);
   }, [])
 
   return (
@@ -117,14 +144,7 @@ const NewProduct = () => {
         <div className="addProductItem">
           <label>Ảnh</label>
           <input type="file" id="file" onChange={(e) => handleUploadImage(e.target.files[0])} />
-          {isLoading && !image ? <CircularProgress color='success' /> : <img src={image} />}
-        </div>
-        <div className="addProductItem">
-          <label>Ảnh liên quan</label>
-          <input type="file" id="file" multiple onChange={(e) => {
-            handleUploadImageInvolve(e.target.files)
-          }} />
-          {!imageInvole && isLoadingInv ? <CircularProgress color='success' /> : imageInvole.map(img => (<img src={img} />))}
+          {isLoading ? <CircularProgress color='success' /> : (image && <img src={image} style={{ width: 100, height: 100 }} />)}
         </div>
         <div className="addProductItem">
           <label>Tên</label>
@@ -145,6 +165,23 @@ const NewProduct = () => {
         <div className="addProductItem">
           <label>Số Điểm</label>
           <input type="text" placeholder="100.000 điểm" onChange={(e) => setPrice(e.target.value)} value={price} />
+        </div>
+        <div className="addProductItem">
+          <label>Danh mục</label>
+          <select name="active" id="active" onChange={(e) => handleSetCategory(e)} value={category}>
+            {categories.map((category, index) => (
+              <option key={index} value={category._id}>{category.name}</option>
+            ))}
+          </select>
+        </div>
+        <div className="addProductItem">
+          <label>Thanh toán bằng</label>
+          <select name="active" id="active" onChange={(e) => {
+            setByPoint(e.target.value === "true" ? true : false)
+          }} value={byPoint}>
+            <option value={true}>Điểm</option>
+            <option value={false}>Tiền</option>
+          </select>
         </div>
         <div className="addProductItem">
           <label>Active</label>
