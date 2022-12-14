@@ -657,6 +657,14 @@ export const links = [
         name: "Danh mục",
         icon: <RiProductHuntFill />,
       },
+      {
+        name: "Ưu đãi viễn thông",
+        icon: <RiProductHuntFill />,
+      },
+      {
+        name: "Mặt hàng viễn thông",
+        icon: <RiProductHuntFill />,
+      },
     ],
   },
   {

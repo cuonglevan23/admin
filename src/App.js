@@ -38,6 +38,10 @@ import { useStateContext } from "./contexts/ContextProvider";
 import Categories from "./pages/Categories";
 import NewCategory from "./pages/NewCategories";
 import Login from "./pages/Login";
+import NewTeleServices from "./pages/NewTeleServices";
+import TeleServices from "./pages/TeleServices";
+import TeleProduct from "./pages/TeleProduct";
+import NewTeleProduct from "./pages/NewTeleProduct";
 
 const App = () => {
   const [admin, setAdmin] = useState(false);
@@ -124,7 +128,25 @@ const App = () => {
                   <Route path="/Danh mục" element={<Categories />} />
                   <Route path="/NewProduct" element={<NewProduct />} />
                   <Route path="/NewCategory" element={<NewCategory />} />
+                  <Route
+                    path="/NewTeleServices"
+                    element={<NewTeleServices />}
+                  />
+                  <Route path="/NewTeleProduct" element={<NewTeleProduct />} />
+                  <Route path="/Ưu đãi viễn thông" element={<TeleServices />} />
+                  <Route
+                    path="/Mặt hàng viễn thông"
+                    element={<TeleProduct />}
+                  />
                   <Route path="/EditProduct/:id" element={<NewProduct />} />
+                  <Route
+                    path="/EditTeleServices/:id"
+                    element={<NewTeleServices />}
+                  />
+                  <Route
+                    path="/EditTeleProduct/:id"
+                    element={<NewTeleProduct />}
+                  />
 
                   {/* apps  */}
                   <Route path="/kanban" element={<Kanban />} />
@@ -141,7 +163,7 @@ const App = () => {
                   <Route path="/color-mapping" element={<ColorMapping />} />
                   <Route path="/pyramid" element={<Pyramid />} />
                   <Route path="/stacked" element={<Stacked />} />
-                  <Route path="*" element={<Navigate to="/" />} />
+                  {/* <Route path="*" element={<Navigate to="/" />} /> */}
                 </Routes>
               </div>
               <Footer />
