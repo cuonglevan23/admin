@@ -40,6 +40,8 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const items = JSON.parse(localStorage.getItem("admin"))
+
   useEffect(() => {
     if (screenSize <= 900) {
       setActiveMenu(false);
@@ -65,13 +67,13 @@ const Navbar = () => {
           >
             <img
               className="rounded-full w-8 h-8"
-              src={avatar}
+              src={items.avatar}
               alt="user-profile"
             />
             <p>
               <span className="text-gray-400 text-14">Hi,</span>{' '}
               <span className="text-gray-400 font-bold ml-1 text-14">
-                Cường
+                {items.firstName}
               </span>
             </p>
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
