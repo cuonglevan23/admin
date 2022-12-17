@@ -74,6 +74,18 @@ const Orders = () => {
     }
   }
 
+  const handleDeniedOrder = async (id) => {
+    try {
+      await axios.post("/order/deny-order", {
+        id
+      })
+      notifySuccess("Đơn hàng đã bị từ chối")
+      handleGetAllCartWaiting()
+    } catch (error) {
+      notifyError("Thất bại")
+    }
+  }
+
   const rows = orders.map((product) => (
     createData(product.idProduct.name, product.idProduct.price, product.quantity, product._id, product.byPoint)
   ))
@@ -106,7 +118,7 @@ const Orders = () => {
                 <StyledTableCell align="right">{row.quantity}</StyledTableCell>
                 <StyledTableCell align="right" style={{ fontSize: 50 }}>
                   <DoneIcon style={{ color: 'blue', cursor: 'pointer', fontSize: 30 }} onClick={() => handleAcceptOrder(row.id)} />
-                  <CloseIcon style={{ color: 'red', cursor: 'pointer', fontSize: 30 }} />
+                  <CloseIcon style={{ color: 'red', cursor: 'pointer', fontSize: 30 }} onClick={() => handleDeniedOrder(row.id)} />
                 </StyledTableCell>
               </StyledTableRow>
             ))}

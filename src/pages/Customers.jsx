@@ -16,6 +16,8 @@ import Paper from '@mui/material/Paper';
 import Row from './Row';
 import { styled } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -46,6 +48,8 @@ const Customers = () => {
   const [user, setUser] = useState([])
   const [users, setUsers] = useState([])
 
+  const notifySuccess = (msg) => toast.success(msg);
+  const notifyError = (msg) => toast.error(msg);
 
   const handleGetUser = async () => {
     try {
@@ -85,8 +89,19 @@ const Customers = () => {
   }
 
 
+  const handleDeleteUser = async (id) => {
+    try {
+      await axios.delete(`/users/${id}`)
+      notifySuccess("Đã xóa người dùng khỏi hệ thống");
+      handleGetUser()
+    } catch (error) {
+      notifyError("Xóa người dùng thất bại")
+    }
+  }
+
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
+      <ToastContainer />
       <Header category="Trang Quản Lý" title="Khách hàng" />
       <TextField id="outlined-basic" label="Type name" variant="outlined" onChange={handleSearchUser} />
       <TableContainer component={Paper}>
@@ -109,7 +124,7 @@ const Customers = () => {
                 <StyledTableCell align="right">{row.image}</StyledTableCell>
                 <StyledTableCell align="right" >{row.email}</StyledTableCell>
                 <StyledTableCell align="right" >{row.point} </StyledTableCell>
-                <StyledTableCell align="right" ><ClearIcon style={{ color: 'red', cursor: 'pointer' }} /></StyledTableCell>
+                <StyledTableCell align="right" ><ClearIcon style={{ color: 'red', cursor: 'pointer' }} onClick={() => handleDeleteUser(row.id)} /></StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
