@@ -40,8 +40,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-function createData(name, avatar, email, point, id) {
-  return { name, avatar, email, point, id, };
+function createData(name, image, email, point, id) {
+  return { name, image, email, point, id, };
 }
 
 const Customers = () => {
